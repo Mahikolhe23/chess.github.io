@@ -1,2 +1,2 @@
-# chess.github.io
-Chess Application
+# Chess using HTMl,CSS,JAVASCRIPT
+Chess Application 
