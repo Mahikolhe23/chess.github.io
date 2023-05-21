@@ -1,2 +1,2 @@
-# Chess using HTMl,CSS,JAVASCRIPT
+# Chess using HTML,CSS,JAVASCRIPT
 Chess Application 
