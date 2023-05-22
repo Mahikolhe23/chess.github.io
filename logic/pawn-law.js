@@ -18,15 +18,14 @@ for (const i of arrayOfPawn) {
             stepsSquare.push(document.getElementById(currentId[0] + change));
         }
         console.log(stepsSquare);
-        highlightCircle(stepsSquare);
+        highlightCircle(stepsSquare, clickedElement);
     });
 }
 //array to track circle
 const trackCircleArray = [];
 
-
 // function to add highlighting
-const highlightCircle = function (attachedCircle) {
+const highlightCircle = function (attachedCircle, clickedElement) {
     if (trackCircleArray.length != 0) {
         undoCircle(trackCircleArray);
     }
@@ -35,6 +34,14 @@ const highlightCircle = function (attachedCircle) {
     attachedCircle.forEach((el) => {
         el.innerHTML = child;
         el.classList.add("flex");
+
+        //moment here
+        el.addEventListener("click", function () {
+            el.innerHTML = clickedElement.innerHTML;
+            const removeCircleFromThis = attachedCircle.filter((e) => e !== el);
+            undoCircle(removeCircleFromThis);
+            clickedElement.innerHTML = "";
+        })
         trackCircleArray.push(el);
     });
 };
