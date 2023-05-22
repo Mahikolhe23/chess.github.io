@@ -9,6 +9,7 @@ for (const i of filesNameArray) {
 }
 for (const i of arrayOfPawn) {
     i.addEventListener("click", () => {
+        const clickedElement = i;
         const currentId = i.getAttribute("id");
         let change = parseInt(currentId[1]);
         const stepsSquare = [];
@@ -20,15 +21,28 @@ for (const i of arrayOfPawn) {
         highlightCircle(stepsSquare);
     });
 }
+//array to track circle
+const trackCircleArray = [];
+
 
 // function to add highlighting
-const highlightCircle = function ([first, second]) {
-    let circle = document.createElement("div");
-    let circle2 = document.createElement("div");
-    circle.setAttribute("class", "circle");
-    circle2.setAttribute("class", "circle");
-    first.appendChild(circle);
-    second.appendChild(circle2);
-    first.classList.add("flex");
-    second.classList.add("flex");
+const highlightCircle = function (attachedCircle) {
+    if (trackCircleArray.length != 0) {
+        undoCircle(trackCircleArray);
+    }
+    //create child element
+    const child = `<div class="circle"></div>`;
+    attachedCircle.forEach((el) => {
+        el.innerHTML = child;
+        el.classList.add("flex");
+        trackCircleArray.push(el);
+    });
 };
+
+//remove circle from elements
+const undoCircle = function (circlesArray) {
+    circlesArray.forEach((cur) => {
+        cur.innerHTML = "";
+        cur.classList.remove("circle");
+    })
+}
