@@ -1,11 +1,12 @@
 .main-container {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     grid-template-columns: repeat(8, 1fr);
     height: 560px;
     width: 560px;
 }
 
-.square {
+.square-common{
     background-color: #EEEED2;
     width: 70px;
     height: 70px;
@@ -39,4 +40,18 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.color-dark {
+    background-color: #769656;
+}
+
+.color-light {
+    background-color: #EEEED2;
+}
+
+.rank-style{
+    width: 560px;
+    height: 70px;
+    display: flex;
 }
