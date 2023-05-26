@@ -2,16 +2,17 @@
 function insertImage() {
     document.querySelectorAll('.box').forEach(image => {
         if (image.innerText.length !== 0) {
-            if (image.innerText == 'Wpawn' || image.innerText == 'Bpawn') {
-                image.innerHTML = `${image.innerText} <img class='allimg allpawn' src="${image.innerText}.png" alt="">`
-                image.style.cursor = 'pointer'
-            }
-            else {
-                image.innerHTML = `${image.innerText} <img class='allimg' src="${image.innerText}.png" alt="">`
-                image.style.cursor = 'pointer'
+            let imageName = image.innerText;
+            let imagePath = `./images/${imageName}.png`;
+            if (imageName === 'Wpawn' || imageName === 'Bpawn') {
+                image.innerHTML = `${image.innerText} <img class='allimg allpawn' src="${imagePath}" alt="">`;
+                image.style.cursor = 'pointer';
+            } else {
+                image.innerHTML = `${image.innerText} <img class='allimg' src="${imagePath}" alt="">`;
+                image.style.cursor = 'pointer';
             }
         }
-    })
+    });
 }
 insertImage()
 
